@@ -28,8 +28,8 @@ const API = axios.create({
 })
 
 export async function submitIdea(formData: FormData) {
-  // expects backend /submit-idea to accept multipart/form-data
-  return API.post('/submit-idea', formData, {
+  // expects backend /api/submit-idea/ to accept multipart/form-data
+  return API.post('/api/submit-idea/', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
 }
@@ -38,11 +38,11 @@ export async function adminLogin(username: string, password: string) {
   const body = new URLSearchParams()
   body.append('username', username)
   body.append('password', password)
-  return API.post('/admin-login', body)
+  return API.post('/api/admin-login/', body)
 }
 
 export async function fetchIdeas(username?: string, password?: string) {
-  // backend earlier expected username & password query params
+  // backend expects /api/ideas/
   const params: any = username && password ? { username, password } : {}
-  return API.get<Idea[]>('/ideas', { params })
+  return API.get<Idea[]>('/api/ideas/', { params })
 }
