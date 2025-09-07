@@ -34,27 +34,6 @@
       </Card>
     </div>
 
-    <!-- Process Flow -->
-    <div class="mt-16 p-8 bg-card/30 backdrop-blur-sm rounded-3xl border">
-      <h4 class="text-xl font-bold text-center mb-8">Analysis Process Flow</h4>
-      <div class="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-8">
-        <div v-for="(step, index) in processSteps" :key="step.id" class="flex items-center gap-4">
-          <div class="flex flex-col items-center">
-            <div class="w-12 h-12 rounded-full bg-ai-gradient flex items-center justify-center text-white font-bold text-sm">
-              {{ index + 1 }}
-            </div>
-            <div class="text-sm font-medium text-center mt-2 max-w-24">
-              {{ step.label }}
-            </div>
-          </div>
-          <div v-if="index < processSteps.length - 1" class="hidden lg:block">
-            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 
@@ -163,10 +142,4 @@ const analysisFeatures = [
   }
 ]
 
-const processSteps = [
-  { id: 1, label: 'Submit Idea' },
-  { id: 2, label: 'AI Analysis' },
-  { id: 3, label: 'Score Generation' },
-  { id: 4, label: 'Recommendations' }
-]
 </script>

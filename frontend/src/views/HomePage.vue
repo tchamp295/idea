@@ -35,35 +35,6 @@
         
         <!-- Analysis Features -->
         <AnalysisFeaturesSection />
-        
-        <!-- Call to Action Footer -->
-        <section class="py-16 text-center">
-          <div class="max-w-3xl mx-auto">
-            <div class="p-8 bg-card/60 backdrop-blur-sm rounded-3xl border">
-              <h3 class="text-2xl lg:text-3xl font-bold mb-4">
-                Ready to Transform Your Idea?
-              </h3>
-              <p class="text-muted-foreground mb-6 text-lg">
-                Join thousands of innovators who trust our AI to evaluate their groundbreaking concepts
-              </p>
-              <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" class="bg-ai-gradient hover:opacity-90 text-white px-8 py-6 text-lg font-semibold">
-                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  Get Started Now
-                </Button>
-                <Button variant="outline" size="lg" class="px-8 py-6 text-lg border-2" @click="$router.push('/ideas')">
-                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                  Browse Ideas
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   </div>
