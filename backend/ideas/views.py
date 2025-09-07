@@ -57,12 +57,6 @@ def admin_login(request):
 
 @api_view(['GET'])
 def get_ideas(request):
-    username = request.GET.get('username')
-    password = request.GET.get('password')
-    
-    if username != ADMIN_USERNAME or password != ADMIN_PASSWORD:
-        return Response({'error': 'Invalid credentials'}, 
-                       status=status.HTTP_401_UNAUTHORIZED)
-    
+    # Allow public access to view ideas
     ideas = firebase_service.get_all_ideas()
     return Response(ideas)
