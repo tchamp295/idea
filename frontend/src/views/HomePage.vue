@@ -1,49 +1,41 @@
 <template>
-  <div class="min-h-screen">
-    <!-- Enhanced Background -->
-    <div class="fixed inset-0 -z-10">
-      <!-- Base gradient -->
-      <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-ai-accent/5"></div>
+  <!-- Clean Hero Section with Brand Colors -->
+  <section class="min-h-screen flex items-center justify-center py-20 bg-custom-light">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+        <span class="text-foreground tracking-tight">Share Your Next</span>
+        <br>
+        <span class="text-custom-primary font-extrabold tracking-wide animate-glow">
+          Big Idea
+        </span>
+      </h1>
       
-      <!-- Neural network pattern -->
-      <div 
-        class="absolute inset-0 opacity-20" 
-        style="background-image: radial-gradient(circle at 1px 1px, rgba(79, 70, 229, 0.15) 1px, transparent 0); background-size: 24px 24px;"
-      ></div>
+      <p class="text-xl sm:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-muted-foreground font-medium">
+        Our community and AI tools will evaluate your proposal for 
+        <span class="text-custom-primary font-bold">impact</span>, 
+        <span class="text-custom-primary font-bold">feasibility</span>, and 
+        <span class="text-custom-primary font-bold">alignment</span> with our mission.
+        <br>
+        <span class="text-custom-secondary">Join us in driving innovation and making a difference!</span>
+      </p>
       
-      <!-- Floating particles -->
-      <div class="absolute inset-0">
-        <div class="absolute top-20 left-10 w-2 h-2 bg-ai-accent/30 rounded-full animate-pulse"></div>
-        <div class="absolute top-40 right-20 w-1 h-1 bg-primary/40 rounded-full animate-pulse" style="animation-delay: 1s"></div>
-        <div class="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-secondary-500/30 rounded-full animate-pulse" style="animation-delay: 2s"></div>
-        <div class="absolute bottom-20 right-1/3 w-1 h-1 bg-ai-accent/40 rounded-full animate-pulse" style="animation-delay: 0.5s"></div>
+      <div class="flex justify-center">
+        <Button 
+          @click="$router.push('/submit')"
+          class="bg-custom-primary hover-primary text-white font-bold min-w-[240px] h-16 px-10 text-xl rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 border-0 relative overflow-hidden group"
+        >
+          <span class="relative z-10 flex items-center justify-center">
+            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            Submit Your Idea
+          </span>
+          <div class="absolute inset-0 bg-accent-primary/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+        </Button>
       </div>
     </div>
-
-    <div class="relative z-10">
-      <!-- Container with proper spacing -->
-      <div class="container mx-auto px-4 py-8 space-y-16">
-        
-        <!-- Hero Section -->
-        <HeroSection />
-        
-        <!-- Stats Section -->
-        <StatsSection />
-        
-        <!-- Idea Submission Form -->
-        <IdeaSubmissionForm />
-        
-        <!-- Analysis Features -->
-        <AnalysisFeaturesSection />
-      </div>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
-import HeroSection from '@/components/sections/HeroSection.vue'
-import StatsSection from '@/components/sections/StatsSection.vue'
-import IdeaSubmissionForm from '@/components/forms/IdeaSubmissionForm.vue'
-import AnalysisFeaturesSection from '@/components/sections/AnalysisFeaturesSection.vue'
-import Button from '@/components/ui/button/Button.vue'
 </script>

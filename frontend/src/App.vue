@@ -1,94 +1,78 @@
 <template>
-  <div class="min-h-screen bg-purple-50 backdrop-blur-md">
-    <!-- AI-Themed Header -->
-    <header class="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-md">
-      <div class="container mx-auto px-4">
-        <div class="flex h-16 items-center justify-between">
-          <!-- Brand Text -->
-          <router-link 
-            to="/" 
-            class="text-xl font-bold text-primary transition-colors"
-          >
-            AI Idea Filter
+  <div class="min-h-screen bg-background">
+    <!-- Brand Colors Header -->
+    <header v-if="!$route.path.includes('/admin/dashboard')" class="bg-card shadow-md sticky top-0 z-50 border-b border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo with Brand Colors -->
+          <router-link to="/" class="text-2xl font-bold text-custom-primary hover:text-accent-highlight transition-colors">
+            Deep Ideas
           </router-link>
 
-          <!-- Navigation -->
-          <nav class="flex items-center gap-1">
-            <router-link 
-              to="/ideas" 
-              class="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground"
-              :class="$route.path === '/ideas' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'"
-            >
-              <div class="flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364-.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-                Ideas
-              </div>
-            </router-link>
-            
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-8">
             <router-link 
               to="/admin" 
-              class="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground"
-              :class="$route.path === '/admin' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'"
+              class="text-foreground hover:text-custom-primary px-3 py-2 rounded-md font-medium transition-colors"
+              :class="$route.path.startsWith('/admin') ? 'text-custom-primary bg-primary-50' : ''"
             >
-              <div class="flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                Admin
-              </div>
+              Admin
             </router-link>
 
-            <!-- Dark Mode Toggle -->
-            <button 
-              @click="toggleDarkMode"
-              class="ml-4 p-2 rounded-lg text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all"
+            <router-link 
+              to="/submit"
+              class="bg-custom-primary hover:bg-custom-primary-hover text-white px-6 py-2.5 rounded-md font-semibold shadow-lg transition-all transform hover:scale-105"
             >
-              <svg v-if="isDark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            </button>
+              Submit Idea
+            </router-link>
           </nav>
+
+          <!-- Mobile menu button -->
+          <button 
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            class="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+          >
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div v-show="mobileMenuOpen" class="md:hidden">
+          <div class="px-2 pt-2 pb-3 space-y-1 bg-card border-t border-border">
+            <router-link 
+              to="/admin" 
+              @click="mobileMenuOpen = false"
+              class="block px-3 py-2 rounded-md text-foreground hover:text-custom-primary hover:bg-muted transition-colors"
+              :class="$route.path.startsWith('/admin') ? 'text-custom-primary bg-primary-50' : ''"
+            >
+              Admin
+            </router-link>
+
+            <router-link 
+              to="/submit"
+              @click="mobileMenuOpen = false"
+              class="block w-full mt-2 bg-custom-primary hover:bg-custom-primary-hover text-white px-4 py-2.5 rounded-md text-center font-semibold shadow-lg transition-all"
+            >
+              Submit Idea
+            </router-link>
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Content with AI Background -->
-    <main class="relative">
-      <!-- AI Grid Background -->
-      <div class="fixed inset-0 -z-10 opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(79, 70, 229, 0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
-      </div>
-      
+    <!-- Main Content -->
+    <main>
       <router-view />
     </main>
-
- 
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
-const isDark = ref(false)
-
-const toggleDarkMode = () => {
-  isDark.value = !isDark.value
-  document.documentElement.classList.toggle('dark', isDark.value)
-  localStorage.setItem('darkMode', isDark.value.toString())
-}
-
-onMounted(() => {
-  const stored = localStorage.getItem('darkMode')
-  if (stored) {
-    isDark.value = stored === 'true'
-    document.documentElement.classList.toggle('dark', isDark.value)
-  }
-})
+// Mobile menu state
+const mobileMenuOpen = ref(false)
 </script>

@@ -83,7 +83,7 @@ const login = async () => {
     // simple approach: store credentials locally (not secure long-term)
     localStorage.setItem('admin_user', username.value)
     localStorage.setItem('admin_pass', password.value)
-    router.push('/admin')
+    router.push('/admin/dashboard')
   } catch (err: any) {
     console.error(err)
     error.value = err?.response?.data?.detail || 'Login failed'
