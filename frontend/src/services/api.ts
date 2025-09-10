@@ -1,26 +1,5 @@
 import axios from 'axios'
-
-export type Idea = {
-  id?: string
-  title?: string
-  description?: string
-  file_url?: string
-  created_at?: string
-  evaluation?: string
-  impact_score?: number
-  feasibility_score?: number
-  alignment_score?: number
-  overall_score?: number
-  is_duplicate?: boolean
-  feedback?: string
-  category?: string
-  subcategory?: string
-  similar_ideas?: Array<{
-    id: string
-    title: string
-    similarity: number
-  }>
-}
+import type { Idea } from '../types'
 
 const API = axios.create({
   baseURL: (import.meta.env.VITE_API_URL as string) || 'http://127.0.0.1:8000',
@@ -42,7 +21,6 @@ export async function adminLogin(username: string, password: string) {
 }
 
 export async function fetchIdeas(username?: string, password?: string) {
-  // backend expects /api/ideas/
-  const params: any = username && password ? { username, password } : {}
+  const params: Record<string, string> = username && password ? { username, password } : {}
   return API.get<Idea[]>('/api/ideas/', { params })
 }

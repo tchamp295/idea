@@ -58,10 +58,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Idea } from '../services/api'
-import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import type { Idea } from '../types'
+import { Card, CardContent, CardDescription, CardTitle } from './ui/card'
+import { Badge } from './ui/badge'
+import { Button } from './ui/button'
 
 interface Props {
   idea: Idea

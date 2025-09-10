@@ -59,12 +59,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { fetchIdeas, type Idea } from '../services/api'
-import { useRouter } from 'vue-router'
-import { Button } from './ui'
-import IdeaCard from './IdeaCard.vue'
+import { fetchIdeas } from '../services/api'
+import type { Idea } from '../types'
+import { Button } from '../components/ui'
+import IdeaCard from '../components/IdeaCard.vue'
 
-const router = useRouter()
 const ideas = ref<Idea[]>([])
 const loading = ref(true)
 

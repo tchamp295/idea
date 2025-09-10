@@ -168,19 +168,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { submitIdea } from '@/services/api'
+import { submitIdea } from '../../services/api'
 import { useRouter } from 'vue-router'
-import Card from '@/components/ui/card/Card.vue'
-import CardContent from '@/components/ui/card/CardContent.vue'
-import CardHeader from '@/components/ui/card/CardHeader.vue'
-import CardTitle from '@/components/ui/card/CardTitle.vue'
-import Button from '@/components/ui/button/Button.vue'
-import Input from '@/components/ui/input/Input.vue'
-import Textarea from '@/components/ui/textarea/Textarea.vue'
-import Label from '@/components/ui/label/Label.vue'
-import Badge from '@/components/ui/badge/Badge.vue'
-import Alert from '@/components/ui/alert/Alert.vue'
-import AlertDescription from '@/components/ui/alert/AlertDescription.vue'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
+import { Textarea } from '../ui/textarea'
+import { Label } from '../ui/label'
+import { Badge } from '../ui/badge'
+import { Alert, AlertDescription } from '../ui/alert'
 
 const title = ref('')
 const description = ref('')

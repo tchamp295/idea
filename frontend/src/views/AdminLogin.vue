@@ -69,7 +69,7 @@
 import { ref } from 'vue'
 import { adminLogin } from '../services/api'
 import { useRouter } from 'vue-router'
-import { Button, Card, CardHeader, CardTitle, CardContent, Input, Label, Alert, AlertDescription } from './ui'
+import { Button, Card, CardHeader, CardTitle, CardContent, Input, Label, Alert, AlertDescription } from '../components/ui'
 
 const username = ref('')
 const password = ref('')

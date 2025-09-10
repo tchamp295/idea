@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-background">
     <!-- Brand Colors Header -->
-    <header v-if="!$route.path.includes('/admin/dashboard')" class="bg-card shadow-md sticky top-0 z-50 border-b border-border">
+    <header v-if="!$route.path.startsWith('/admin/') || $route.path === '/admin/login'" class="bg-card shadow-md sticky top-0 z-50 border-b border-border">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <!-- Logo with Brand Colors -->
